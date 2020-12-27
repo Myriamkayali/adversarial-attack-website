@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>FYP Project</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <meta http-equiv=”refresh” content=”5" />
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Break neural networks in your browser.">
+    <link rel="shortcut icon" href="data/favicon.ico" />
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+  
+
+ 
+</head>
+
+<body>
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header">
+
+    <div id="topbar">
+      <div class="container">
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <h1 class="text-light"><a href="#intro" class="scrollto"><span>FYP Project</span></a></h1>
+        <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a id="exit" href="#intro">Home</a></li>
+          <li><a href="#about">About The Project</a></li>
+          <li><a href="#services">Attacks</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#footer">Contact Us</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-8 intro-info order-md-first order-last">
+          
+         
+  
+      <div id="dashboard">
+     <h2>Choose  <br>the <span>Attack:</span></h2>
+
+        <div class="row">
+
+
+          <div class="one-half column border-right">
+
+            <div id="original-image-overlay" class="overlay"></div>
+
+            <h5 class="center">Original Image</h5>
+          </div>
+          <div class="one-half column">
+            <div id="adversarial-image-overlay" class="overlay"></div>
+            <h5 class="center">Adversarial Image</h5>
+          </div>
+        </div>
+
+        <div class="row border-bottom">
+          <div class="one-half column split border-right">
+            <div id="original-canvas-overlay" ></div>
+            <div class="splitleft61">
+              <canvas id="original" class="tableimg" width="224" height="224"></canvas>
+            </div>
+                 <div class="splitright45">
+              <label for="select-target">Attack</label>
+              <select id="select-attack" class="u-full-width" data-model="mnist"onchange="changeAttack()">
+                <option value="ShapeShifter">ShapeShifter</option>
+                <option value="Lisa">Lisa</option>
+                <option value="RetinaNet">Retina Net</option>
+    
+              </select>
+            </div>
+          </div>
+
+          <div class="one-half column split">
+            
+            <div class="splitleft55">
+              <canvas id="adversarial" class="tableimg" width="224" height="224"></canvas>
+  
+            </div>
+
+            <div class="splitright45">
+              <label for="select-target">Turn this image into a:</label>
+              <select id="select-target" class="u-full-width" onchange="changeTag()" >
+                <option value="person">Person</option>
+                <option value="bench">Bench</option>
+                <option value="umbrella">Umbrella</option>
+                <option value="traffic">Traffic Light</option>
+                 <option value="dog">Dog</option>
+                <option value="bicycle">Bicycle</option>
+                <option value="car">Car</option>
+              </select>
+              
+              <div id="paragraph">
+                 <label for="Results">Results:</label>
+            
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+           <button type="submit" onclick="hideImage();" class="AClass">
+           <span>&times;</span>
+        </button>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
+  <input type="button" class="runcss" value="Run" onclick="showImage();"/>
+    </div>
+    
+  
+    
+    <div class="class="col-lg-7 col-md-6"">
+
+      <img id="loadingImage" src="img/umbrella.jpg" style="visibility:hidden" class="img-fluid"/>
+
+    </div>
+  </div>  
+    
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="img/intro-img.svg" alt="" class="img-fluid" style="visibility:hidden">
+        </div>
+      </div>
+
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-6">
+            <div class="about-img">
+               <h3>Github Repository:</h3>
+              <img src="img/github.png" alt="" onclick="github()">
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-md-6">
+            <div class="about-content">
+              <h2>About the Project</h2>
+              <h3>Adversarial Attacks on self driving cars using adversarial patches on road signs - A survey</h3>
+              <p>Recent studies show that attacking an object detector is more difficult than attacking an image classifier, as it needs to mislead the classification results in multiple bounding boxes with different scales. Extending the digital attack to the physical world adds another layer of difficulty because it requires the perturbation to be robust enough to survive real-world distortions due to different viewing distances and angles, lighting conditions, and camera limitations. In this report, we will be discussing classifiers and detectors that can generate adversarially perturbed stop signs that are consistently misdetection as other objects, posing a potential threat to autonomous vehicles and other safety-critical computer vision systems. Moreover, we will propose an evaluation of the performance, including some of their implementation, of the classifiers and detectors we discussed.
+
+</p>
+              <ul>
+                <li><i class="ion-android-checkmark-circle"></i> GTSRB-CNN</li>
+                <li><i class="ion-android-checkmark-circle"></i> LISA-CNN</li>
+                <li><i class="ion-android-checkmark-circle"></i> Faster R-CNN</li>
+        <li><i class="ion-android-checkmark-circle"></i> R-CNN (Chinese version)</li>
+        <li><i class="ion-android-checkmark-circle"></i> Retinanet</li>
+              </ul> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- #about -->
+
+
+   
+
+    <!--==========================
+      Team Section
+    ============================-->
+    <section id="team" class="section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h3>Meet the Team</h3>
+          <p> </p>
+      <p> </P>      <!-- to be omitted ~Hani X3 -->
+     </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="img/team-1.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Marina Kayrouz</h4>
+                  <span>Computer Science student at AUB</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="img/team-2.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Myriam Kayali</h4>
+                  <span>Computer science student at AUB</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="img/team-3.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Hani Alsabe</h4>
+                  <span>Computer Science student at AUB</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="img/team-4.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Mohamed Nassar</h4>
+                  <span>Professor at AUB</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <p> </p> <!--to be omitted ~Hani X4-->
+    <p> </p>
+    <p> </p>
+    <p> &nbsp</p>
+    <p> </p>
+    <p> </p>
+    
+        </div>
+    
+      </div>
+  </section><!-- #team -->
+
+    
+<script >
+if (location.href.indexOf('reload')==-1)
+{
+   location.href=location.href+'?reload';
+}
+function changeAttack() {
+//select-attack
+  var p = document.getElementById("paragraph");
+    p.style.display = "none"; 
+  var Attack = document.getElementById("select-attack").value;
+
+  if(Attack=="ShapeShifter"){
+      var c2 = document.getElementById("adversarial");
+  var ctx = c2.getContext("2d");
+  base_image2 = new Image();
+      base_image2.src = "Shapeshifterimages/"+"person"+".png";;
+       ctx.drawImage(base_image2, 0, 0, 230, 230);
+
+
+
+
+    var x = document.getElementById("select-target");
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+     x.remove(0);
+
+ 
+      var sel = document.getElementById("select-target");
+      var opt1 = document.createElement("option");
+      var opt2 = document.createElement("option");
+      var opt3 = document.createElement("option");
+      var opt4 = document.createElement("option");
+      var opt5 = document.createElement("option");
+      var opt6 = document.createElement("option");
+      var opt7 = document.createElement("option");
+
+      opt1.value = "person";
+      opt1.text = "Person";
+
+      opt2.value = "bench";
+      opt2.text = "Bench";
+
+      opt3.value = "umbrella";
+      opt3.text = "Umbrella";
+
+      opt4.value = "traffic";
+      opt4.text = "Traffic";
+
+      opt5.value = "dog";
+      opt5.text = "Dog";
+
+      opt6.value = "bicycle";
+      opt6.text = "Bicycle";
+
+      opt7.value = "car";
+      opt7.text = "Car";
+
+      sel.add(opt1, null);
+      sel.add(opt2, null);
+      sel.add(opt3, null);
+      sel.add(opt4, null);
+      sel.add(opt5, null);
+      sel.add(opt6, null);
+      sel.add(opt7, null);
+
+
+      
+
+
+  }
+  
+  else if(Attack=="Lisa"){
+
+    var x = document.getElementById("select-target");
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+    x.remove(0);
+   
+  var c2 = document.getElementById("adversarial");
+  var ctx = c2.getContext("2d");
+  base_image2 = new Image();
+      base_image2.src = "LISAIMAGES/"+"food"+".png";;
+       ctx.drawImage(base_image2, 0, 0, 230, 230);
+
+
+      var sel = document.getElementById("select-target");
+      var opt1 = document.createElement("option");
+      var opt2 = document.createElement("option");
+      var opt3 = document.createElement("option");
+      var opt4 = document.createElement("option");
+      var opt5 = document.createElement("option");
+
+      opt1.value = "food";
+      opt1.text = "Food";
+
+      opt2.value = "clock";
+      opt2.text = "Clock";
+
+      opt3.value = "toy";
+      opt3.text = "Toy";
+
+      opt4.value = "photograph";
+      opt4.text = "Photograph";
+
+      opt5.value = "lighting";
+      opt5.text = "Lighting";
+
+      sel.add(opt1, null);
+      sel.add(opt2, null);
+      sel.add(opt3, null);
+      sel.add(opt4, null);
+      sel.add(opt5, null);
+
+
+  }
+  
+
+    
+      
+
+  }
+
+    
+function github(){
+  window.location.href = 'https://github.com/MarinaKeyrouz/Adversarial-Attacks-on-Road-Signs';
+}
+function changeTag() {
+    var p = document.getElementById("paragraph");
+    p.style.display = "none"; 
+
+    var Target = document.getElementById("select-target").value;
+    var Attack = document.getElementById("select-attack").value;  
+
+
+    var c2 = document.getElementById("adversarial");
+    var ctx = c2.getContext("2d");
+    base_image2 = new Image();
+
+    if(Attack=="ShapeShifter"){
+   
+       base_image2.src = "Shapeshifterimages/"+Target+".png";
+       ctx.drawImage(base_image2, 0, 0, 230, 230);
+
+    }
+    else if (Attack=="Lisa"){
+
+      base_image2.src = "LISAIMAGES/"+Target+".png";
+       ctx.drawImage(base_image2, 0, 0, 230, 230);
+    }
+   
+    
+}
+
+window.onload = function() {
+  var c = document.getElementById("original");
+  var ctx = c.getContext("2d");
+   base_image = new Image();
+         
+  base_image.src = "Shapeshifterimages/originalimage.png";
+  ctx.drawImage(base_image, 0, 0, 230, 230);
+
+  var c2 = document.getElementById("adversarial");
+  var ctx = c2.getContext("2d");
+   base_image2 = new Image();
+         
+  base_image2.src = "Shapeshifterimages/person.png";
+  ctx.drawImage(base_image2, 0, 0, 230, 230);
+ 
+}
+function showImage() {
+  var e = document.getElementById("select-target");
+  var Target = e.value;
+  var a = document.getElementById("select-attack");
+  var Attack = a.value;
+
+ 
+  if (Attack =="ShapeShifter"){  
+    image= "Shapeshifterimages/"+Target+"attack.png";
+    showimageattack(image);
+  }
+  if (Attack =="Lisa"){
+  
+      var p = document.getElementById("paragraph");
+      p.style.display = "block";   
+      var results = "<b>Results: </b>"; 
+
+      if(Target=="clock"){
+
+        results += " 55%";
+
+
+
+      }
+      else if(Target=="toy"){
+        results += " 53%";
+
+      }
+      else if(Target=="food"){
+        results += " 50%";
+
+      }
+      else if(Target=="photograph"){
+        results += " 96%";
+
+      }
+      else if(Target=="lighting"){
+        results += " 57%";
+
+      }
+
+      p.innerHTML = results; 
+    // image= "Shapeshifterimages/"+Target+"attack.png";
+    // showimageattack(image);
+  }
+}
+function showimageattack(image){
+  var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+
+
+  modal.style.display = "block";
+  modalImg.src = image;
+  //captionText.innerHTML = this.alt;
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+}
+
+function hideImage() { 
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+</script>
+<style >
+#paragraph
+{
+  display:none;
+}
+
+
+
+#AClass{
+ 
+
+  top: 90px;
+  right: 10px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+
+
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
